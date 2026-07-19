@@ -3,33 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+  <!-- Applies the saved/system theme before first paint, avoiding a flash of the wrong theme -->
+  <script>
+    (function () {
+      var stored = localStorage.getItem('theme');
+      var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+
   <title>Premium Calculator — Built by Abdisa Birru</title>
   <meta name="description" content="A fast, accessible calculator built with vanilla HTML, CSS, and JavaScript — real-time results, full keyboard support, and a modern dark interface.">
   <meta name="author" content="Abdisa Birru">
   <meta name="theme-color" content="#0A0E17">
   <link rel="canonical" href="https://abdibirru.github.io/premium-calculator/">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Premium Calculator">
   <meta property="og:description" content="A fast, accessible calculator built with vanilla HTML, CSS, and JavaScript.">
   <meta property="og:url" content="https://abdibirru.github.io/premium-calculator/">
   <meta property="og:image" content="https://abdibirru.github.io/premium-calculator/assets/og-image.png">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Premium Calculator">
   <meta name="twitter:description" content="A fast, accessible calculator built with vanilla HTML, CSS, and JavaScript.">
 
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
-  <!-- Fonts: Inter for UI, JetBrains Mono for the display -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/calculator.css">
@@ -42,6 +47,23 @@
     <p class="site-header__brand">
       Built by <a href="https://github.com/abdibirru" target="_blank" rel="noopener noreferrer">Abdisa Birru</a>
     </p>
+
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false" aria-label="Switch to light theme">
+      <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"></circle>
+        <line x1="12" y1="2" x2="12" y2="4"></line>
+        <line x1="12" y1="20" x2="12" y2="22"></line>
+        <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+        <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+        <line x1="2" y1="12" x2="4" y2="12"></line>
+        <line x1="20" y1="12" x2="22" y2="12"></line>
+        <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+        <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+      </svg>
+      <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
   </header>
 
   <main id="main-content">
@@ -90,6 +112,7 @@
     <p class="noscript-warning">This calculator requires JavaScript to function. Please enable JavaScript in your browser.</p>
   </noscript>
 
+  <script src="js/theme.js" defer></script>
   <script type="module" src="js/ui.js"></script>
 </body>
 </html>
