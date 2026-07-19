@@ -1,0 +1,150 @@
+.calculator {
+  width: 100%;
+  max-width: 380px;
+  padding: var(--space-5);
+  background: rgba(19, 24, 38, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+/* --- Display --- */
+.display {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-3);
+  margin-bottom: var(--space-5);
+  min-height: 110px;
+}
+
+.display__history {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  height: 1.2em;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 100%;
+  direction: ltr;
+}
+
+.display__current {
+  font-family: var(--font-mono);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-semibold);
+  color: var(--text);
+  line-height: 1.1;
+  overflow-x: auto;
+  white-space: nowrap;
+  max-width: 100%;
+  scrollbar-width: none;
+}
+
+.display__current::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Keypad grid --- */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+}
+
+/* --- Base key style --- */
+.key {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-medium);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  transition: transform var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.key:active {
+  transform: scale(0.94);
+}
+
+/* --- Number keys --- */
+.key--number {
+  background: var(--surface-2);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+
+.key--number:hover {
+  background: var(--surface-3);
+}
+
+/* --- Function keys (AC, ±, %) --- */
+.key--function {
+  background: var(--surface-3);
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+}
+
+.key--function:hover {
+  color: var(--text);
+}
+
+/* --- Operator keys (÷ × − +) --- */
+.key--operator {
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--accent-2);
+  font-weight: var(--fw-semibold);
+}
+
+.key--operator:hover {
+  background: rgba(108, 92, 231, 0.25);
+}
+
+.key--operator.is-active {
+  background: var(--accent-gradient);
+  color: var(--bg);
+}
+
+/* --- Equals key --- */
+.key--equals {
+  background: var(--accent-gradient);
+  color: var(--bg);
+  font-weight: var(--fw-bold);
+  box-shadow: var(--shadow-glow);
+}
+
+.key--equals:hover {
+  filter: brightness(1.1);
+}
+
+/* --- Wide "0" key --- */
+.key--wide {
+  grid-column: span 2;
+  aspect-ratio: auto;
+  justify-content: flex-start;
+  padding-left: var(--space-6);
+}
+
+/* --- Small phones --- */
+@media (max-width: 360px) {
+  .calculator {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+  }
+
+  .key {
+    font-size: var(--fs-lg);
+  }
+
+  .key--wide {
+    padding-left: var(--space-5);
+  }
+}
