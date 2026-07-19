@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Premium Calculator — Built by Abdisa Birru</title>
+  <meta name="description" content="A fast, accessible calculator built with vanilla HTML, CSS, and JavaScript — real-time results, full keyboard support, and a modern dark interface.">
+  <meta name="author" content="Abdisa Birru">
+  <meta name="theme-color" content="#0A0E17">
+  <link rel="canonical" href="https://abdibirru.github.io/premium-calculator/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Premium Calculator">
+  <meta property="og:description" content="A fast, accessible calculator built with vanilla HTML, CSS, and JavaScript.">
+  <meta property="og:url" content="https://abdibirru.github.io/premium-calculator/">
+  <meta property="og:image" content="https://abdibirru.github.io/premium-calculator/assets/og-image.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Premium Calculator">
+  <meta name="twitter:description" content="A fast, accessible calculator built with vanilla HTML, CSS, and JavaScript.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Fonts: Inter for UI, JetBrains Mono for the display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/calculator.css">
+</head>
+<body>
+
+  <a href="#calculator" class="skip-link">Skip to calculator</a>
+
+  <header class="site-header">
+    <p class="site-header__brand">
+      Built by <a href="https://github.com/abdibirru" target="_blank" rel="noopener noreferrer">Abdisa Birru</a>
+    </p>
+  </header>
+
+  <main id="main-content">
+    <section id="calculator" class="calculator" aria-label="Calculator">
+
+      <div class="display">
+        <div class="display__history" id="display-history" aria-hidden="true"></div>
+        <div class="display__current" id="display-current" aria-label="Current value">0</div>
+      </div>
+
+      <div class="keypad" role="group" aria-label="Calculator keys">
+
+        <button type="button" class="key key--function" data-action="clear" aria-label="All clear">AC</button>
+        <button type="button" class="key key--function" data-action="toggle-sign" aria-label="Toggle positive or negative">±</button>
+        <button type="button" class="key key--function" data-action="percent" aria-label="Percent">%</button>
+        <button type="button" class="key key--operator" data-action="operator" data-value="÷" aria-label="Divide">÷</button>
+
+        <button type="button" class="key key--number" data-action="number" data-value="7">7</button>
+        <button type="button" class="key key--number" data-action="number" data-value="8">8</button>
+        <button type="button" class="key key--number" data-action="number" data-value="9">9</button>
+        <button type="button" class="key key--operator" data-action="operator" data-value="×" aria-label="Multiply">×</button>
+
+        <button type="button" class="key key--number" data-action="number" data-value="4">4</button>
+        <button type="button" class="key key--number" data-action="number" data-value="5">5</button>
+        <button type="button" class="key key--number" data-action="number" data-value="6">6</button>
+        <button type="button" class="key key--operator" data-action="operator" data-value="−" aria-label="Subtract">−</button>
+
+        <button type="button" class="key key--number" data-action="number" data-value="1">1</button>
+        <button type="button" class="key key--number" data-action="number" data-value="2">2</button>
+        <button type="button" class="key key--number" data-action="number" data-value="3">3</button>
+        <button type="button" class="key key--operator" data-action="operator" data-value="+" aria-label="Add">+</button>
+
+        <button type="button" class="key key--number key--wide" data-action="number" data-value="0">0</button>
+        <button type="button" class="key key--number" data-action="decimal" aria-label="Decimal point">.</button>
+        <button type="button" class="key key--equals" data-action="equals" aria-label="Calculate result">=</button>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>View source on <a href="https://github.com/abdibirru/premium-calculator" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+  </footer>
+
+  <noscript>
+    <p class="noscript-warning">This calculator requires JavaScript to function. Please enable JavaScript in your browser.</p>
+  </noscript>
+
+  <script type="module" src="js/ui.js"></script>
+</body>
+</html>
