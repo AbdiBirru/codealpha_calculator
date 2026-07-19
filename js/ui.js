@@ -1,9 +1,3 @@
-/**
- * CalculatorEngine
- * Pure arithmetic + state logic — no DOM access here.
- * Keeping logic separate from rendering makes this testable
- * and reusable outside the browser if needed.
- */
 class CalculatorEngine {
   constructor() {
     this.reset();
@@ -13,12 +7,12 @@ class CalculatorEngine {
     this.currentValue = '0';
     this.previousValue = null;
     this.operator = null;
-    this.overwrite = true; // next digit press replaces the display
+    this.overwrite = true;
   }
 
   inputDigit(digit) {
     const rawLength = this.currentValue.replace('-', '').replace('.', '').length;
-    if (!this.overwrite && rawLength >= 15) return; // prevent runaway input
+    if (!this.overwrite && rawLength >= 15) return;
 
     if (this.overwrite) {
       this.currentValue = digit === '.' ? '0.' : digit;
@@ -87,7 +81,6 @@ class CalculatorEngine {
         return;
     }
 
-    // Round to kill floating point noise (e.g. 0.1 + 0.2)
     result = Math.round((result + Number.EPSILON) * 1e10) / 1e10;
 
     this.currentValue = String(result);
@@ -118,10 +111,6 @@ class CalculatorEngine {
   }
 }
 
-/**
- * CalculatorUI
- * Owns all DOM access: rendering, click delegation, and keyboard input.
- */
 class CalculatorUI {
   constructor(engine) {
     this.engine = engine;
@@ -156,6 +145,7 @@ class CalculatorUI {
       default: return;
     }
     this.render();
+    if (action === 'equals') this.flashResult();
   }
 
   handleKeydown(e) {
@@ -182,6 +172,12 @@ class CalculatorUI {
       e.preventDefault();
       keyMap[e.key]();
     }
+  }
+
+  flashResult() {
+    this.currentEl.classList.remove('is-result');
+    void this.currentEl.offsetWidth; // forces reflow so the animation can replay
+    this.currentEl.classList.add('is-result');
   }
 
   render() {

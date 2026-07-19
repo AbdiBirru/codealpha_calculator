@@ -56,6 +56,19 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+/* Visually hidden but still announced by screen readers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .skip-link {
   position: absolute;
   top: -100%;
@@ -105,7 +118,6 @@ a:focus-visible {
   margin-top: auto;
 }
 
-/* Theme toggle */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -121,9 +133,11 @@ a:focus-visible {
     border-color var(--transition-slow), transform var(--transition-fast);
 }
 
-.theme-toggle:hover {
-  color: var(--text);
-  background: var(--surface-3);
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle:hover {
+    color: var(--text);
+    background: var(--surface-3);
+  }
 }
 
 .theme-toggle:active {
@@ -156,4 +170,14 @@ a:focus-visible {
   text-align: center;
   padding: var(--space-3);
   font-weight: var(--fw-semibold);
+}
+
+/* Respect OS-level "reduce motion" accessibility setting */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

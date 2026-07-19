@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <!-- Applies the saved/system theme before first paint, avoiding a flash of the wrong theme -->
   <script>
     (function () {
       var stored = localStorage.getItem('theme');
@@ -67,11 +66,17 @@
   </header>
 
   <main id="main-content">
-    <section id="calculator" class="calculator" aria-label="Calculator">
+    <section id="calculator" class="calculator" aria-label="Calculator" aria-describedby="calculator-instructions">
+
+      <p id="calculator-instructions" class="sr-only">
+        Use number keys zero through nine, plus, minus, asterisk, and slash
+        for operations. Press Enter or equals to calculate, Escape to clear
+        everything, and Backspace to delete the last digit.
+      </p>
 
       <div class="display">
         <div class="display__history" id="display-history" aria-hidden="true"></div>
-        <div class="display__current" id="display-current" aria-label="Current value">0</div>
+        <div class="display__current" id="display-current" aria-live="polite" aria-atomic="true" aria-label="Current value">0</div>
       </div>
 
       <div class="keypad" role="group" aria-label="Calculator keys">
@@ -112,7 +117,7 @@
     <p class="noscript-warning">This calculator requires JavaScript to function. Please enable JavaScript in your browser.</p>
   </noscript>
 
-  <script src="js/theme.js" defer></script>
+    <script src="js/theme.js" defer></script>
   <script type="module" src="js/ui.js"></script>
 </body>
 </html>

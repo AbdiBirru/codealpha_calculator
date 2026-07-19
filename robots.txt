@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abdibirru.github.io/premium-calculator/sitemap.xml
