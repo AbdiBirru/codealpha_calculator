@@ -2,7 +2,7 @@
 
 A fast, accessible calculator built with vanilla HTML, CSS, and JavaScript — no frameworks, no build step, no dependencies.
 
-Live demo: https://abdibirru.github.io/codealpha-calculator/
+Live demo: https://abdibirru.github.io/codealpha_calculator/
 
 ## Features
 
@@ -46,7 +46,7 @@ premium-calculator/
 
 No build step required.
 
-git clone https://github.com/abdibirru/codealpha-calculator.git
+git clone https://github.com/abdibirru/codealpha_calculator.git
 cd codealpha-calculator
 python3 -m http.server 8080
 Then open http://localhost:8080.
